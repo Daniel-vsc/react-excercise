@@ -38,9 +38,10 @@ class EvenNumbers extends React.Component {
     console.log(numbers)
     const numbersFiltered = numbers.filter(number => number % 2 === 0).map(number => <li key={number}>{number}</li>)
     console.log(numbersFiltered)
+    const showMessage = numbers.length > 0;
     return (
       <div>
-        <h2>Tylko parzyste </h2> 
+        {showMessage && <h2>Tylko parzyste </h2> }
         <ul>
           {numbersFiltered}
         </ul>
@@ -64,6 +65,26 @@ function EvenNumbersConditional(props) {
   )
 }
 
+// Zadanie 1
+// git add .
+// git commit -m "Exercise 1 - Conditional age checker"
+
+function AgeChecker(props) {
+  const minAge = 18
+  const age = props.age 
+
+  if (minAge < age) {
+    return (
+      <h2>Jestes pełnoletni</h2>
+      )
+    } else{
+      return (
+        <h2>Jestes niepełnoletni</h2>
+        )
+    }
+    
+}
+
 function App() {
   const numbers = [3, 5, 7]
   
@@ -73,6 +94,7 @@ function App() {
       <Numbers numbers={numbers} />
       <EvenNumbers numbers={numbers}/>
       <EvenNumbersConditional numbers={numbers}/>
+      <AgeChecker age={2}/>
      </div>
   );
 }
